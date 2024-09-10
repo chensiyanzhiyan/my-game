@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反应速度测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 100px auto;
+            padding: 20px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>反应速度测试</h1>
+        <p>点击“开始”按钮，然后再点击“停止”按钮，测试你的反应速度。</p>
+        <button id="startButton" onclick="startTimer()">开始</button>
+        <button id="stopButton" onclick="stopTimer()" disabled>停止</button>
+        <p id="result">反应时间将显示在这里</p>
+    </div>
+
+    <script>
+        let startTime, endTime;
+
+        function startTimer() {
+            startTime = new Date().getTime();
+            document.getElementById("startButton").disabled = true;
+            document.getElementById("stopButton").disabled = false;
+            document.getElementById("result").innerText = "计时中...";
+        }
+
+        function stopTimer() {
+            endTime = new Date().getTime();
+            let reactionTime = (endTime - startTime) / 1000; // 转换为秒
+            document.getElementById("result").innerText = `你的反应时间是：${reactionTime} 秒`;
+            document.getElementById("startButton").disabled = false;
+            document.getElementById("stopButton").disabled = true;
+        }
+    </script>
+
+</body>
+</html>
